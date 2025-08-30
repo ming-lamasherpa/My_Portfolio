@@ -1,27 +1,27 @@
 import React from "react";
+import FadeInWhenVisible from "./FadeInWhenVisible";
 
-const Projects = () => {
-  return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="container mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold mb-10 text-cyan-600">Projects</h2>
-        <div className="grid md:grid-cols-2 gap-10">
-          <div className="p-6 bg-gray-100 rounded-2xl shadow hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-3">Health Appointment System</h3>
-            <p className="text-gray-700">
-              Built an efficient health appointment system with two team members during my final year project, helping patients schedule appointments with doctors easily.
-            </p>
-          </div>
-          <div className="p-6 bg-gray-100 rounded-2xl shadow hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold mb-3">Portfolio Website</h3>
-            <p className="text-gray-700">
-              Designed and developed my own portfolio website using React.js, Vite, and TailwindCSS to showcase my skills and achievements.
-            </p>
-          </div>
-        </div>
+const projects = [
+  { name: "Health Appointment System", desc: "Built with React & Django, efficient and user-friendly." },
+  { name: "Portfolio Website", desc: "This professional portfolio using React & TailwindCSS." },
+];
+
+const Projects = () => (
+  <section id="projects" className="py-20 bg-gray-50">
+    <div className="container mx-auto px-6 text-center">
+      <h2 className="text-3xl font-bold mb-10 text-indigo-600">Projects</h2>
+      <div className="grid md:grid-cols-2 gap-8">
+        {projects.map((proj, i) => (
+          <FadeInWhenVisible key={i} delay={i * 0.1}>
+            <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition transform hover:-translate-y-2">
+              <h3 className="text-xl font-semibold mb-2">{proj.name}</h3>
+              <p className="text-gray-700">{proj.desc}</p>
+            </div>
+          </FadeInWhenVisible>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Projects;
